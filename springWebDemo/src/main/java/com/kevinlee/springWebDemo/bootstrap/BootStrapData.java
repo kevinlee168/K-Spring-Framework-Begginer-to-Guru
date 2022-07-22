@@ -2,8 +2,10 @@ package com.kevinlee.springWebDemo.bootstrap;
 
 import com.kevinlee.springWebDemo.domain.Author;
 import com.kevinlee.springWebDemo.domain.Book;
+import com.kevinlee.springWebDemo.domain.Publisher;
 import com.kevinlee.springWebDemo.repositories.AuthorRepository;
 import com.kevinlee.springWebDemo.repositories.BookRepository;
+import com.kevinlee.springWebDemo.repositories.PublisherRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
@@ -11,10 +13,12 @@ import org.springframework.stereotype.Component;
 public class BootStrapData implements CommandLineRunner {
     private final AuthorRepository authorRepository;
     private final BookRepository bookRepository;
+    private final PublisherRepository publisherRepository;
 
-    public BootStrapData(AuthorRepository authorRepository, BookRepository bookRepository) {
+    public BootStrapData(AuthorRepository authorRepository, BookRepository bookRepository, PublisherRepository publisherRepository) {
         this.authorRepository = authorRepository;
         this.bookRepository = bookRepository;
+        this.publisherRepository = publisherRepository;
     }
 
     @Override
@@ -37,5 +41,14 @@ public class BootStrapData implements CommandLineRunner {
 
         System.out.println("Added " + bookRepository.count() + " books and "
                 + authorRepository.count() + " authors into the DB...");
+
+        System.out.println("Start to add publishers...");
+        Publisher publisher = new Publisher();
+        publisher.setName("ABC Publishing");
+        publisher.setCity("New York");
+        publisher.setState("NY");
+        publisherRepository.save(publisher);
+
+        System.out.println("Added " + publisherRepository.count() + " into the DB.");
     }
 }
