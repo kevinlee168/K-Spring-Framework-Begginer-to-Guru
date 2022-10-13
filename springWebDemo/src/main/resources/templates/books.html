@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Books List Page</title>
+</head>
+<body>
+    <div th:align="center">
+        <h1>Book list</h1>
+        <table>
+            <tr>
+                <th>ID</th>
+                <th>Title</th>
+                <th>Publisher</th>
+            </tr>
+            <tr th:each="book : ${books}">
+                <td th:text="${book.id}">123</td>
+                <td th:text="${book.title}">Spring Boot</td>
+<!--                <th:block th:if="${book.publisher}">-->
+<!--                    <td th:text="${book.publisher.name}">ABC</td>-->
+<!--                </th:block>-->
+                <td th:text="${book.publisher.name}">ABC</td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>

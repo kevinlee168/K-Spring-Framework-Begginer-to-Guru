@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Author List Page</title>
+</head>
+<body>
+    <div th:align="center">
+        <h1>Author list</h1>
+        <table>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Books</th>
+            </tr>
+            <tr th:each="author : ${authors}">
+                <td th:text="${author.id}">123</td>
+                <td th:text="${author.firstName + ' ' + author.lastName}">FirstName LastName</td>
+<!--                <th:block th:if="${book.publisher}">-->
+<!--                    <td th:text="${book.publisher.name}">ABC</td>-->
+<!--                </th:block>-->
+                <td>
+                    <ul th:each="book : ${author.books}">
+                        <li th:text="${book.title}">No book</li>
+                    </ul>
+                </td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>

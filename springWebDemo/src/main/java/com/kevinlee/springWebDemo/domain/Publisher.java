@@ -97,4 +97,5 @@ public class Publisher {
     public int hashCode() {
         return id != null ? id.hashCode() : 0;
     }
+
 }
